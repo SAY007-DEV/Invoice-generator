@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import api from '../services/api';
+import axios from 'axios';
 import useAuthStore from '../store/authStore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,7 +21,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await api.post('/auth/login', { email, password });
+      const response = await axios.post('http://localhost:8000/auth/login', { email, password });
       setAuth(response.data.token, response.data.user);
       toast.success('Welcome back!');
       navigate('/dashboard');
