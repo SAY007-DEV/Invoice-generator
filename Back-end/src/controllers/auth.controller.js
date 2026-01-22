@@ -1,5 +1,5 @@
 import User from "../models/User.model";
-import { hashpassword } from "../utils/Password";
+import { comparepassword, hashpassword } from "../utils/Password";
 
 
 
@@ -29,4 +29,27 @@ try {
 
     
 }
+}
+
+
+export const login = async(req,res)=>{
+    const {email,password}=req.body;
+    try {
+        const user = await User.findOne({email});
+        if (!user|| !(await comparepassword(password,user.password))) {
+            res.status(400).json({message:"Invalid credentials"})
+
+        }
+            const token = generatepassword(user._id);
+            res.status(200).json({
+                message:"Login successful",
+                token,
+                user
+            })  
+        
+    } catch (error) {
+       console.log(error); 
+       res.status(500).json({message:"Internal server error"})
+    
+    }
 }
