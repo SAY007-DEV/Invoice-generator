@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finnix Server - Running Smoothly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom animations for jungle elements */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes flutter {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(5px) translateY(-5px); }
+            50% { transform: translateX(-5px) translateY(-10px); }
+            75% { transform: translateX(5px) translateY(-5px); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        .animate-slide-up {
+            animation: slideUp 1s ease-out 0.5s both;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-flutter {
+            animation: flutter 4s ease-in-out infinite;
+        }
+        /* Additional styles for elements */
+        .vine {
+            animation: float 4s ease-in-out infinite;
+        }
+        .bird {
+            animation: flutter 3s ease-in-out infinite;
+        }
+        .leaf {
+            animation: float 5s ease-in-out infinite;
+        }
+        .particle {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white overflow-hidden relative">
+    <!-- Jungle elements: vines, birds, leaves, particles -->
+    <div class="absolute inset-0 pointer-events-none">
+        <!-- Vines -->
+        <div class="vine absolute top-10 left-10 w-20 h-40 bg-green-600 rounded-full opacity-70"></div>
+        <div class="vine absolute top-20 right-20 w-16 h-32 bg-green-500 rounded-full opacity-60" style="animation-delay: 1s;"></div>
+        <!-- Birds -->
+        <div class="bird absolute top-1/4 left-0 w-8 h-8 bg-yellow-400 rounded-full opacity-80"></div>
+        <div class="bird absolute top-1/2 right-0 w-6 h-6 bg-orange-400 rounded-full opacity-70" style="animation-delay: 2s;"></div>
+        <!-- Leaves -->
+        <div class="leaf absolute bottom-20 left-1/4 w-12 h-12 bg-green-400 rounded-full opacity-80" style="animation-delay: 1s;"></div>
+        <div class="leaf absolute bottom-10 right-1/3 w-10 h-10 bg-lime-400 rounded-full opacity-75" style="animation-delay: 1.5s;"></div>
+        <!-- Floating particles (fireflies) -->
+        <div class="particle absolute w-2 h-2 bg-yellow-300 rounded-full top-10 left-10"></div>
+        <div class="particle absolute w-3 h-3 bg-yellow-200 rounded-full top-20 right-20" style="animation-delay: 1s;"></div>
+        <div class="particle absolute w-2 h-2 bg-yellow-400 rounded-full top-40 left-1/2" style="animation-delay: 2s;"></div>
+        <div class="particle absolute w-3 h-3 bg-yellow-300 rounded-full top-60 right-10" style="animation-delay: 3s;"></div>
+        <div class="particle absolute w-2 h-2 bg-yellow-200 rounded-full top-80 left-20" style="animation-delay: 4s;"></div>
+    </div>
+
+    <div class="container opacity-0 animate-fade-in flex items-center justify-center min-h-screen z-10">
+        <div class="content text-center animate-slide-up">
+            <h1 class="text-4xl md:text-6xl font-bold text-green-400 mb-4 animate-pulse">
+                🌿 API and SERVER is running smoothly! 🦜
+            </h1>
+            <p class="text-lg md:text-xl mb-4 text-gray-200">
+                Welcome to Finnix Server. Everything is set up and ready to go in the jungle!
+            </p>
+            <p class="mb-4">
+                Developed by <a href="https://github.com/SAY007-DEV" class="text-green-300 hover:text-green-500 underline">SAYOOJ</a>
+            </p>
+            <p class="time text-gray-400">Loaded Time: <span id="currentTime"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            document.getElementById("currentTime").innerText = new Date().toLocaleTimeString();
+        }
+        updateTime(); // Initial update
+        setInterval(updateTime, 1000); // Update every second for live time
+    </script>
+</body>
+</html>
