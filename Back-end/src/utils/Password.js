@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 
 
-export const password =(password)=>{
+export const hashpassword =(password)=>{
     bcrypt.hash(password,10)
 }
 
