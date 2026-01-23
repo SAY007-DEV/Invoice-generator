@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import api from '../services/api';
+import axios from 'axios';
 import useAuthStore from '../store/authStore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,7 +28,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const response = await api.post('/auth/register', formData);
+      const response = await axios.post('/auth/register', formData);
       setAuth(response.data.token, response.data.user);
       toast.success('Account created successfully!');
       navigate('/dashboard');
