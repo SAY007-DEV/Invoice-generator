@@ -1,5 +1,5 @@
-import User from "../models/User.model";
-import { comparepassword, hashpassword } from "../utils/Password";
+import User from "../models/User.model.js";
+import { comparepassword, hashpassword } from "../utils/Password.js";
 
 
 
