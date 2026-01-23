@@ -28,7 +28,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const response = await axios.post('/auth/register', formData);
+      const response = await axios.post('http://localhost:3000/api/v1/auth/register', formData);
       setAuth(response.data.token, response.data.user);
       toast.success('Account created successfully!');
       navigate('/dashboard');
