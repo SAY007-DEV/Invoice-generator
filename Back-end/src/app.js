@@ -31,3 +31,13 @@ connectDB();
 // routes
 
 app.use('api/v1/auth',router)
+
+
+
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "script-src 'self'; style-src 'self' 'unsafe-inline';"
+  );
+  next();
+});
